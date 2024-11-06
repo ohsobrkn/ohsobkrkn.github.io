@@ -1,4 +1,4 @@
-/* 一级菜单居中 */
+/*————————一级菜单居中————————*/
 #nav .menus_items {
     top:10px;
     position: absolute !important;
@@ -14,33 +14,7 @@
   .menus_items .menus_item:nth-child(2) .menus_item_child {
     left: -125px;
   }
-
-/* 一图流 */
-/* 页脚与头图透明 */
-
-#page-header {
-  background: transparent !important;
-}
-
-#footer {
-  background: transparent !important;
-}
-
-/* 白天模式遮罩透明 */
-#footer::before {
-  background: transparent important;
-}
-#page-header::before {
-  background: transparent important;
-}
-
-/* 夜间模式遮罩透明 */
-[data-theme="dark"] #footer::before {
-  background: transparent !important;
-}
-[data-theme="dark"] #page-header::before {
-  background: transparent !important;
-}
+/*————————一级菜单居中——end——————*/
 
 /* ————————文字霓虹灯效果———————— */
 /* 日间模式不生效 */
@@ -282,12 +256,113 @@
 
 /* 个人信息Follow me按钮 */
 #aside-content > .card-widget.card-info > #card-info-btn {
-  background-color: #3eb8be;
+  background-color: #d16262;
   border-radius: 8px;
 }
 /* 侧边栏个人信息卡片动态渐变色——end */
 
-/*————————调节各个页面透明度、模糊度（亚克力效果）、圆角、边框样式等————————*/
+@media (prefers-color-scheme: light) {
+  #footer::before {
+    background: rgba(0, 0, 0, 0.3) !important;  /* 半透明黑色遮罩 */
+  }
+  #page-header::before {
+    background: rgba(0, 0, 0, 0.3) !important;  /* 半透明黑色遮罩 */
+  }
+}
+
+
+/* 页脚与头图透明 */
+#footer {
+  background: transparent !important;
+}
+#page-header {
+  background: transparent !important;
+}
+
+/* 白天模式遮罩透明 */
+#footer::before {
+  background: transparent important;
+}
+#page-header::before {
+  background: transparent important;
+}
+
+/* 夜间模式遮罩透明 */
+[data-theme="dark"] #footer::before {
+  background: transparent !important;
+}
+[data-theme="dark"] #page-header::before {
+  background: transparent !important;
+}
+
+#footer {
+  background: rgba(0, 0, 0, 0.3) !important; /* 半透明黑色背景，透明度为0.5 */
+}
+
+
+/* 侧边栏个人信息卡片动态渐变色 */
+#aside-content > .card-widget.card-info {
+  background: linear-gradient(
+    -45deg,
+    #e8d8b9,
+    #eccec5,
+    #a3e9eb,
+    #bdbdf0,
+    #eec1ea
+  );
+  box-shadow: 0 0 5px rgb(66, 68, 68);
+  position: relative;
+  background-size: 400% 400%;
+  -webkit-animation: Gradient 10s ease infinite;
+  -moz-animation: Gradient 10s ease infinite;
+  animation: Gradient 10s ease infinite !important;
+}
+@-webkit-keyframes Gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@-moz-keyframes Gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@keyframes Gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* 黑夜模式适配 */
+[data-theme="dark"] #aside-content > .card-widget.card-info {
+  background: #191919ee;
+}
+
+/* 个人信息Follow me按钮 */
+#aside-content > .card-widget.card-info > #card-info-btn {
+  background-color: #27dfe8;
+  border-radius: 8px;
+}
+
+
 :root {
   --trans-light: rgba(255, 255, 255, 0.88);
   --trans-dark: rgba(25, 25, 25, 0.88);
@@ -315,7 +390,7 @@
 div#post,
 div#page,
 div#archive {
-  background: var(--trans-dark);
+  background: var(--trans-light);
   backdrop-filter: var(--backdrop-filter);
   border: var(--border-style);
   border-radius: 20px;
@@ -331,7 +406,6 @@ div#archive {
   background: rgba(0, 0, 0, 0.7) !important;
 }
 
-
 /* 夜间模式遮罩 */
 [data-theme="dark"] #recent-posts > .recent-post-item,
 [data-theme="dark"] #aside-content .card-widget,
@@ -341,6 +415,10 @@ div#archive {
   background: var(--trans-dark);
 }
 
+/* 设置主页文章的透明背景 */
+.article-card {
+  background: rgba(255, 255, 255, 0.5); /* 调整透明度，0 为完全透明，1 为不透明 */
+}
 
 /* 夜间模式页脚页头遮罩透明 */
 [data-theme="dark"] #footer::before {
@@ -367,29 +445,3 @@ div#archive {
   background: rgba(25, 25, 25, 0.9) !important;
   color: #ffffff;
 }
-
-/* 白天模式下页首透明遮罩 */
-@media (prefers-color-scheme: light) {
-  header {
-    position: relative;  /* 确保可以定位遮罩 */
-  }
-
-  header::before {
-    content: '';  /* 空内容 */
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.3);  /* 半透明黑色遮罩 */
-    z-index: 1;  /* 确保遮罩在header内容之上 */
-  }
-
-  header > * {
-    position: relative;  /* 确保内容在遮罩之上 */
-    z-index: 2;
-  }
-}
-
-
-/*————————调节各个页面透明度、模糊度（亚克力效果）、圆角、边框样式等——end——————*/
