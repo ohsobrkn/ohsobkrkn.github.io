@@ -446,4 +446,7 @@ div#archive {
   color: #ffffff;
 }
 
-
+.loading-img {
+  background: url(/img/logo0002.png) no-repeat center center;
+  background-size: cover;
+}
